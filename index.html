@@ -22,8 +22,91 @@ section{padding:88px 0;border-bottom:1px solid var(--line)}h2{font-family:Georgi
 .video-frame{position:relative;padding-top:56.25%;background:#111;max-width:900px}.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .memory{background:var(--dark);color:#eee;text-align:center}.memory p{max-width:760px;margin:auto;color:#ccc;font-size:18px}footer{padding:32px;text-align:center;color:var(--muted);font-size:13px}
 @media(max-width:820px){.links{display:none}.hero{grid-template-columns:1fr}.hero-photo{min-height:56vh;order:-1;background-position:center center}.hero-copy{padding:50px 24px}.bio-grid,.work-grid,.books{grid-template-columns:1fr}.gwide,.gtall,.g4{grid-column:span 12;aspect-ratio:auto}}
-</style></head><body>
-<nav><div class="wrap"><div class="brand">ר׳ עמרם לידא ע״ה</div><div class="links"><a href="#life">סיפור חייו</a><a href="#work">מפעל חייו</a><a href="#books">הספרים</a><a href="#photos">תמונות</a><a href="#video">וידאו</a></div></div></nav>
+
+/* Explicit device-adaptive modes */
+.mobile-nav-toggle{display:none}
+.mobile-menu{display:none}
+
+html.mobile-mode body{font-size:16px}
+html.mobile-mode nav .wrap{min-height:58px}
+html.mobile-mode .brand{font-size:16px}
+html.mobile-mode .links{display:none}
+html.mobile-mode .mobile-nav-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;border:1px solid var(--line);
+  background:var(--card);border-radius:10px;font-size:22px;cursor:pointer
+}
+html.mobile-mode .mobile-menu{
+  display:none;position:absolute;top:58px;right:0;left:0;
+  background:var(--paper);border-bottom:1px solid var(--line);
+  padding:10px 24px 18px;box-shadow:0 8px 24px rgba(0,0,0,.08)
+}
+html.mobile-mode .mobile-menu.open{display:block}
+html.mobile-mode .mobile-menu a{
+  display:block;padding:10px 0;text-decoration:none;
+  color:var(--ink);border-bottom:1px solid rgba(0,0,0,.06)
+}
+
+html.mobile-mode .hero{grid-template-columns:1fr;min-height:auto}
+html.mobile-mode .hero-photo{
+  min-height:52vh;order:-1;background-position:center 33%;
+}
+html.mobile-mode .hero-copy{padding:36px 22px 44px}
+html.mobile-mode h1{font-size:46px}
+html.mobile-mode .hero p{font-size:18px}
+html.mobile-mode .quote{font-size:22px}
+
+html.mobile-mode section{padding:58px 0}
+html.mobile-mode .wrap{padding:0 18px}
+html.mobile-mode h2{font-size:34px}
+html.mobile-mode .lead{font-size:17px;margin-bottom:28px}
+html.mobile-mode .bio-grid,
+html.mobile-mode .work-grid,
+html.mobile-mode .books{grid-template-columns:1fr}
+html.mobile-mode .bio-grid{gap:28px}
+html.mobile-mode .work-grid{gap:28px}
+html.mobile-mode .statline{display:grid;grid-template-columns:1fr 1fr}
+html.mobile-mode .stat{min-width:0}
+html.mobile-mode .book{padding:21px}
+html.mobile-mode .volume{font-size:21px}
+html.mobile-mode .series-title{font-size:27px}
+html.mobile-mode .series-gap{margin-top:52px}
+html.mobile-mode .gwide,
+html.mobile-mode .gtall,
+html.mobile-mode .g4{grid-column:span 12;aspect-ratio:auto}
+html.mobile-mode .gallery{gap:10px}
+html.mobile-mode .gallery img{max-height:560px;object-fit:cover}
+html.mobile-mode .video-frame{width:100%}
+html.mobile-mode footer{padding:24px 18px}
+
+html.desktop-mode .hero-photo{background-position:center center}
+
+</style>
+<script>
+(function () {
+  function applyDeviceMode() {
+    const isMobileUA = /Android|iPhone|iPad|iPod|Mobile|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isNarrow = window.matchMedia("(max-width: 820px)").matches;
+    const mobile = isMobileUA || isNarrow;
+
+    document.documentElement.classList.toggle("mobile-mode", mobile);
+    document.documentElement.classList.toggle("desktop-mode", !mobile);
+  }
+
+  applyDeviceMode();
+  window.addEventListener("resize", applyDeviceMode);
+})();
+</script>
+
+</head><body>
+<nav>
+<div class="wrap">
+  <div class="brand">ר׳ עמרם לידא ע״ה</div>
+  <div class="links"><a href="#life">סיפור חייו</a><a href="#work">מפעל חייו</a><a href="#books">הספרים</a><a href="#photos">תמונות</a><a href="#video">וידאו</a></div>
+  <button class="mobile-nav-toggle" aria-label="פתיחת תפריט" aria-expanded="false">☰</button>
+</div>
+<div class="mobile-menu"><a href="#life">סיפור חייו</a><a href="#work">מפעל חייו</a><a href="#books">הספרים</a><a href="#photos">תמונות</a><a href="#video">וידאו</a></div>
+</nav>
 
 <header class="hero"><div class="hero-copy"><div class="kicker">לזכרו של</div><h1>ר׳ עמרם לידא ע״ה</h1><p>מודד, איש ציבור, תלמיד, עורך ומפיץ תורה — מסע חיים שהפך למפעל של שימור והנגשת תורת החסידות והקבלה לדורות.</p><div class="quote">״עיקר העבודה עוד לפנינו״</div></div><div class="hero-photo" role="img" aria-label="ר׳ עמרם לידא"></div></header>
 
@@ -127,5 +210,28 @@ section{padding:88px 0;border-bottom:1px solid var(--line)}h2{font-family:Georgi
 
 <section id="video"><div class="wrap"><h2>וידאו וזכרונות</h2><p class="lead">ראיון עם ר׳ עמרם לידא מתוך התכנית ״אור חדש״, לצד ארכיון מתפתח של סרטונים, הספדים, ניגונים ועדויות.</p><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/ZYaF8YPZJM8" title="ראיון עם ר׳ עמרם לידא מתוך אור חדש" allowfullscreen></iframe></div></div></section>
 <section class="memory"><div class="wrap"><h2>יהי זכרו ברוך</h2><p>האתר נועד לשמר את סיפור חייו, את מפעלו ואת החומרים שהותיר אחריו — ולהעמיד אותם לרשות בני המשפחה, החברים, הלומדים והדורות הבאים.</p></div></section>
-<footer>אתר לזכרו של ר׳ עמרם לידא ע״ה · גרסה 4</footer>
+<footer>אתר לזכרו של ר׳ עמרם לידא ע״ה · גרסה 5</footer>
+
+<script>
+(function () {
+  const btn = document.querySelector(".mobile-nav-toggle");
+  const menu = document.querySelector(".mobile-menu");
+  if (!btn || !menu) return;
+
+  btn.addEventListener("click", function () {
+    const open = menu.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.textContent = open ? "✕" : "☰";
+  });
+
+  menu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      menu.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+      btn.textContent = "☰";
+    });
+  });
+})();
+</script>
+
 </body></html>
